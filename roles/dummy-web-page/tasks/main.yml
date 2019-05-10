@@ -1,0 +1,15 @@
+---
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+    update-cache: yes
+  notify: restart nginx
+
+- name: Copy dummy web page
+  copy:
+    src: files/index.html
+    dst: /var/www/html/index.html
+    owner: www-data
+    group: www-data
+    mode: 0644
